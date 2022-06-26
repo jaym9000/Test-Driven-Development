@@ -1,6 +1,13 @@
 const findTheOldest = function (people) {
   const findTheOldest = people.map((a) => {
-    let ages = a.yearOfDeath - a.yearOfBirth;
+    const today = new Date();
+    let ages;
+    let currYear = a.hasOwnProperty("yearOfDeath");
+
+    currYear
+      ? (ages = a.yearOfDeath - a.yearOfBirth)
+      : (ages = today.getFullYear() - a.yearOfBirth);
+
     return ages;
   });
 
